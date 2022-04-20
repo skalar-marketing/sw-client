@@ -1,6 +1,7 @@
 package sw
 
 import (
+	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -18,6 +19,7 @@ const (
 type Client struct {
 	baseURL     string
 	swAccessKey string
+	Category    CategoryClient
 }
 
 // NewClient creates a new Client for given host and access key.
@@ -29,10 +31,12 @@ func NewClient(host, accessKey string) (*Client, error) {
 	}
 
 	u.Path = storeAPI
-	return &Client{
+	c := &Client{
 		baseURL:     u.String(),
 		swAccessKey: accessKey,
-	}, nil
+	}
+	c.Category = CategoryClient{client: c}
+	return c, nil
 }
 
 // Context gives some general information about the store and the user.
@@ -48,6 +52,43 @@ func (client *Client) Context() (*Context, error) {
 
 func (client *Client) performGet(endpoint string, result any) error {
 	req, err := http.NewRequest("GET", client.baseURL+endpoint, nil)
+
+	if err != nil {
+		return err
+	}
+
+	req.Header.Set("Content-Type", "application/json")
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("sw-access-key", client.swAccessKey)
+	c := http.Client{}
+	resp, err := c.Do(req)
+
+	if err != nil {
+		return err
+	}
+
+	if resp.StatusCode != http.StatusOK {
+		body, _ := io.ReadAll(resp.Body)
+		return errors.New(fmt.Sprintf("error requesting data (%d): %s", resp.StatusCode, string(body)))
+	}
+
+	decoder := json.NewDecoder(resp.Body)
+
+	if err := decoder.Decode(result); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (client *Client) performPost(endpoint string, request, result any) error {
+	body, err := json.Marshal(request)
+
+	if err != nil {
+		return err
+	}
+
+	req, err := http.NewRequest("POST", client.baseURL+endpoint, bytes.NewReader(body))
 
 	if err != nil {
 		return err

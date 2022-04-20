@@ -3,7 +3,7 @@ package sw
 // Context contains some general information about the store and the user.
 type Context struct {
 	Token string `json:"token"`
-	//currentCustomerGroup
+	//currentCustomerGroup TODO
 	//fallbackCustomerGroup
 	//currency
 	//salesChannel
