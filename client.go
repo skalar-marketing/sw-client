@@ -20,6 +20,7 @@ type Client struct {
 	baseURL     string
 	swAccessKey string
 	Category    CategoryClient
+	Product     ProductClient
 }
 
 // NewClient creates a new Client for given host and access key.
@@ -36,6 +37,7 @@ func NewClient(host, accessKey string) (*Client, error) {
 		swAccessKey: accessKey,
 	}
 	c.Category = CategoryClient{client: c}
+	c.Product = ProductClient{client: c}
 	return c, nil
 }
 
