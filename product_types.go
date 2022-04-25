@@ -87,8 +87,8 @@ type Product struct {
 	//seoCategory
 }
 
-// ListProductsCategoryFilter is used to filter products for a category.
-type ListProductsCategoryFilter struct {
+// ListProductsFilter is used to filter products for a category.
+type ListProductsFilter struct {
 	NoAggregations   string   `json:"no-aggregations"`
 	OnlyAggregations string   `json:"only-aggregations"`
 	Page             int      `json:"page"`
@@ -96,7 +96,7 @@ type ListProductsCategoryFilter struct {
 	Filter           []Filter `json:"filter"`
 	Sort             []Sort   `json:"sort"`
 	PostFilter       []Filter `json:"post-filter"`
-	//associations TODO
+	//associations
 	Aggregations       []Aggregation `json:"aggregations"`
 	Grouping           []string      `json:"grouping"`
 	Order              string        `json:"order"`
@@ -116,16 +116,22 @@ type ListProductsCategoryFilter struct {
 	ReduceAggregations string        `json:"reduce-aggregations"`
 }
 
-// ListProductsCategoryResult is the result type for products in a category.
-type ListProductsCategoryResult struct {
+// ListProductsResult is the result type for products in a category.
+type ListProductsResult struct {
 	ApiAlias string `json:"apiAlias"`
 	Entity   string `json:"entity"`
 	Total    int    `json:"total"`
-	//aggregations TODO
+	//aggregations
 	Page  int `json:"page"`
 	Limit int `json:"limit"`
 	//currentFilters
 	//availableSortings
 	Sorting  string    `json:"sorting"`
 	Elements []Product `json:"elements"`
+}
+
+// GetProductResult is the result type for a single product.
+type GetProductResult struct {
+	Product *Product `json:"product"`
+	//configurator
 }

@@ -21,7 +21,7 @@ type Category struct {
 	Visible                bool     `json:"visible"`
 	Active                 bool     `json:"active"`
 	Name                   string   `json:"name"`
-	//customFields TODO
+	//customFields
 	LinkType         string    `json:"linkType"`
 	InternalLink     string    `json:"internalLink"`
 	ExternalLink     string    `json:"externalLink"`
@@ -70,7 +70,7 @@ type ListCategoryFilter struct {
 	Filter     []Filter `json:"filter"`
 	Sort       []Sort   `json:"sort"`
 	PostFilter []Filter `json:"post-filter"`
-	//associations TODO
+	//associations
 	Aggregations []Aggregation `json:"aggregations"`
 	Grouping     []string      `json:"grouping"`
 }
@@ -82,7 +82,7 @@ type GetCategoryFilter struct {
 	Filter     []Filter `json:"filter"`
 	Sort       []Sort   `json:"sort"`
 	PostFilter []Filter `json:"post-filter"`
-	//associations TODO
+	//associations
 	Aggregations       []Aggregation `json:"aggregations"`
 	Grouping           []string      `json:"grouping"`
 	Order              string        `json:"order"`
@@ -107,7 +107,7 @@ type ListCategoryResult struct {
 	ApiAlias string `json:"apiAlias"`
 	Entity   string `json:"entity"`
 	Total    int    `json:"total"`
-	//aggregations TODO
+	//aggregations
 	Page     int        `json:"page"`
 	Limit    int        `json:"limit"`
 	Elements []Category `json:"elements"`
