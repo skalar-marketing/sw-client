@@ -18,6 +18,7 @@ func TestProductClient_ListCategory(t *testing.T) {
 	result, err := client.Product.ListCategory(categories.Elements[0].Id, ListProductsFilter{})
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
+
 }
 
 func TestProductClient_Get(t *testing.T) {

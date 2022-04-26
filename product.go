@@ -17,7 +17,7 @@ type ProductClient struct {
 func (client *ProductClient) ListCategory(categoryId string, filter ListProductsFilter) (*ListProductsResult, error) {
 	result := new(ListProductsResult)
 
-	if err := client.client.performPost(fmt.Sprintf(listProductsCategoryEndpoint, categoryId), filter, &result); err != nil {
+	if err := client.client.performPost(fmt.Sprintf(listProductsCategoryEndpoint, categoryId), filter, result); err != nil {
 		return nil, err
 	}
 
@@ -28,7 +28,7 @@ func (client *ProductClient) ListCategory(categoryId string, filter ListProducts
 func (client *ProductClient) Get(id string) (*GetProductResult, error) {
 	result := new(GetProductResult)
 
-	if err := client.client.performPost(fmt.Sprintf(getProductEndpoint, id), nil, &result); err != nil {
+	if err := client.client.performPost(fmt.Sprintf(getProductEndpoint, id), nil, result); err != nil {
 		return nil, err
 	}
 
@@ -39,7 +39,7 @@ func (client *ProductClient) Get(id string) (*GetProductResult, error) {
 func (client *ProductClient) Search(filter ListProductsFilter) (*ListProductsResult, error) {
 	result := new(ListProductsResult)
 
-	if err := client.client.performPost(searchProductsEndpoint, filter, &result); err != nil {
+	if err := client.client.performPost(searchProductsEndpoint, filter, result); err != nil {
 		return nil, err
 	}
 

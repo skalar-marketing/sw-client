@@ -16,7 +16,7 @@ type CategoryClient struct {
 func (client *CategoryClient) List(filter ListCategoryFilter) (*ListCategoryResult, error) {
 	result := new(ListCategoryResult)
 
-	if err := client.client.performPost(listCategoriesEndpoint, filter, &result); err != nil {
+	if err := client.client.performPost(listCategoriesEndpoint, filter, result); err != nil {
 		return nil, err
 	}
 
@@ -27,7 +27,7 @@ func (client *CategoryClient) List(filter ListCategoryFilter) (*ListCategoryResu
 func (client *CategoryClient) Get(id string, filter GetCategoryFilter) (*Category, error) {
 	result := new(Category)
 
-	if err := client.client.performPost(fmt.Sprintf(getCategoryEndpoint, id), filter, &result); err != nil {
+	if err := client.client.performPost(fmt.Sprintf(getCategoryEndpoint, id), filter, result); err != nil {
 		return nil, err
 	}
 
