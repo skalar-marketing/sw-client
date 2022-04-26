@@ -36,7 +36,7 @@ func (client *ProductClient) Get(id string) (*GetProductResult, error) {
 }
 
 // Search searches for products.
-func (client *ProductClient) Search(filter ListProductsFilter) (*ListProductsResult, error) {
+func (client *ProductClient) Search(filter SearchProductsFilter) (*ListProductsResult, error) {
 	result := new(ListProductsResult)
 
 	if err := client.client.performPost(searchProductsEndpoint, filter, result); err != nil {

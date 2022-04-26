@@ -112,7 +112,37 @@ type ListProductsFilter struct {
 	RatingFilter       bool          `json:"rating-filter"`
 	ShippingFreeFilter bool          `json:"shipping-free-filter"`
 	PropertyFilter     bool          `json:"property-filter"`
-	PropertyWhitelist  string        `json:"property-whitelist"`
+	PropertyWhitelist  []string      `json:"property-whitelist"`
+	ReduceAggregations string        `json:"reduce-aggregations"`
+}
+
+// SearchProductsFilter is used to search for products.
+type SearchProductsFilter struct {
+	NoAggregations   string   `json:"no-aggregations"`
+	OnlyAggregations string   `json:"only-aggregations"`
+	Search           string   `json:"search"`
+	Page             int      `json:"page"`
+	Limit            int      `json:"limit"`
+	Filter           []Filter `json:"filter"`
+	Sort             []Sort   `json:"sort"`
+	PostFilter       []Filter `json:"post-filter"`
+	//associations
+	Aggregations       []Aggregation `json:"aggregations"`
+	Grouping           []string      `json:"grouping"`
+	Order              string        `json:"order"`
+	P                  int           `json:"p"`
+	Manufacturer       string        `json:"manufacturer"`
+	MinPrice           int           `json:"min-price"`
+	MaxPrice           int           `json:"max-price"`
+	Rating             int           `json:"rating"`
+	ShippingFree       bool          `json:"shipping-free"`
+	Properties         string        `json:"properties"`
+	ManufacturerFilter bool          `json:"manufacturer-filter"`
+	PriceFilter        bool          `json:"price-filter"`
+	RatingFilter       bool          `json:"rating-filter"`
+	ShippingFreeFilter bool          `json:"shipping-free-filter"`
+	PropertyFilter     bool          `json:"property-filter"`
+	PropertyWhitelist  []string      `json:"property-whitelist"`
 	ReduceAggregations string        `json:"reduce-aggregations"`
 }
 
