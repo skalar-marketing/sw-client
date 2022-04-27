@@ -40,8 +40,8 @@ type LoginResult struct {
 	ContextToken string `json:"contextToken"`
 } //TODO Response 401
 
-// SuccessfulLogout returns a context token for the anonymous user.
-type SuccessfulLogout struct {
+// LogoutResult returns a context token for the anonymous user.
+type LogoutResult struct {
 	ContextToken string `json:"contextToken"`
 } //TODO Response 403
 
@@ -91,6 +91,25 @@ type RegisterResult struct {
 	//DefaultShippingAddress []DefaultShippingAddress `json:"defaultShippingAddress"`
 	//Salutation []Salutation `json:"salutation"`
 	//Addresses []Addresses `json:"addresses"`
+}
+
+// LoginError returns an error if credentials are incorrect.
+type LoginError struct {
+	//Meta   []Meta   `json:"meta"`
+	//Links  []Links  `json:"links"`
+	Errors []Errors `json:"errors"`
+}
+
+// Errors contains the struct Errors for LoginError.
+type Errors struct {
+	//Id string `json:"id"`
+	//Links []Links `json:"links"`
+	//Status string `json:"status"`
+	//Code string `json:"code"`
+	//Title string `json:"title"`
+	//Detail string `json:"detail"`
+	//Source []Source `json:"source"`
+	//Meta []Meta `json:"meta"`
 }
 
 // BillingAddress is the billing address.
