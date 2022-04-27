@@ -24,7 +24,7 @@ type Register struct {
 	AcceptedDataProtection string           `json:"acceptedDataProtection"`
 	StorefrontUrl          string           `json:"storefrontUrl"`
 	BillingAddress         []BillingAddress `json:"billingAddress"` //Das Objekt ist unten
-	//ShippingAddress        []ShippingAddress `json:"shippingAddress"` //Das Objekt ist unten
+	ShippingAddress        []ShippingAddress `json:"shippingAddress"` //Das Objekt ist unten
 	//AccountType   string `json:"accountType"`
 	//Guest         string `json:"guest"`
 	//BirthdayDay   string `json:"birthdayDay"`
@@ -97,11 +97,11 @@ type RegisterResult struct {
 type LoginError struct {
 	//Meta   []Meta   `json:"meta"`
 	//Links  []Links  `json:"links"`
-	Errors []Errors `json:"errors"`
+	Errors []LoginErrors `json:"errors"` /* Struct hat anderen Namen, weil es Errors auch bei cart_types gibt. */
 }
 
-// Errors contains the struct Errors for LoginError.
-type Errors struct {
+// LoginErrors is the struct LoginErrors for LoginError.
+type LoginErrors struct {
 	//Id string `json:"id"`
 	//Links []Links `json:"links"`
 	//Status string `json:"status"`
@@ -136,19 +136,19 @@ type BillingAddress struct {
 	//Salutation []Salutation
 }
 
-//// ShippingAddress is the shipping address.
-//type ShippingAddress struct {
+// ShippingAddress is the shipping address.
+type ShippingAddress struct {
 //	//Id         string `json:"id"`
-//	CustomerId string `json:"customerId"`
-//	CountryId      string `json:"countryId"`
+	CustomerId string `json:"customerId"`
+	CountryId      string `json:"countryId"`
 //	//CountryStateId string `json:"countryStateId"`
-//	SalutationId string `json:"salutationId"`
-//	FirstName    string `json:"firstName"`
-//	LastName     string `json:"lastName"`
-//	Zipcode      string `json:"zipcode"`
-//	City         string `json:"city"`
+	SalutationId string `json:"salutationId"`
+	FirstName    string `json:"firstName"`
+	LastName     string `json:"lastName"`
+	Zipcode      string `json:"zipcode"`
+	City         string `json:"city"`
 //	//Company
-//	Street string `json:"street"`
+	Street string `json:"street"`
 //	//Department
 //	//Title
 //	//PhoneNumber

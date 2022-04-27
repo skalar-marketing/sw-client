@@ -7,7 +7,7 @@ const (
 	registerCustomerEndpoint    = "/account/register"
 )
 
-// CustomerClient handles all requests regarding user login/registration.
+// CustomerClient handles all requests regarding customer login/registration.
 type CustomerClient struct {
 	client *Client
 }
