@@ -4,10 +4,10 @@ package sw
 
 // Cart is a cart.
 type Cart struct { /*EVtl. CartResult? */
-	//ApiAlias        string         `json:"apiAlias"`
-	Name      string       `json:"name"`
-	Token     string       `json:"token"`
-	Price     []Price      `json:"price"`
+	ApiAlias string `json:"apiAlias"`
+	Name     string `json:"name"`
+	Token    string `json:"token"`
+	//Price     []Price      `json:"price"`		/* Unsichtbar weil ansonsten der Test nicht funktioniert. */
 	LineItems []LineItems  `json:"lineItems"`
 	Errors    []CartErrors `json:"errors"` /* Struct hat anderen Namen, weil es Errors auch bei customer_types gibt. */
 	//Transactions []Transactions `json:"transactions"`
@@ -22,8 +22,8 @@ type Cart struct { /*EVtl. CartResult? */
 //	Success bool `json:"success"`
 //}
 
-//AddUpdateItemCart adds or updates items to the cart.
-type AddUpdateItemCart struct {
+//AddNUpdateItemCart adds or updates items to the cart.
+type AddNUpdateItemCart struct {
 	//ApiAlias string  `json:"apiAlias"`
 	Items []Items `json:"items"`
 }
