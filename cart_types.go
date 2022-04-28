@@ -7,7 +7,7 @@ type Cart struct { /*EVtl. CartResult? */
 	ApiAlias string `json:"apiAlias"`
 	Name     string `json:"name"`
 	Token    string `json:"token"`
-	//Price     []Price      `json:"price"`		/* Unsichtbar weil ansonsten der Test nicht funktioniert. */
+	//PriceCart     []PriceCart      `json:"price"`		/* Unsichtbar weil ansonsten der Test nicht funktioniert. */
 	LineItems []LineItems  `json:"lineItems"`
 	Errors    []CartErrors `json:"errors"` /* Struct hat anderen Namen, weil es Errors auch bei customer_types gibt. */
 	//Transactions []Transactions `json:"transactions"`
@@ -28,8 +28,8 @@ type AddNUpdateItemCart struct {
 	Items []Items `json:"items"`
 }
 
-//Price is the struct Price for Cart.
-type Price struct {
+//PriceCart is the struct PriceCart for Cart.
+type PriceCart struct {
 	NetPrice      float64 `json:"netPrice"`
 	TotalPrice    float64 `json:"totalPrice"`
 	PositionPrice float64 `json:"positionPrice"`
