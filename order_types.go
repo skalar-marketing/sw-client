@@ -46,22 +46,17 @@ type Order struct {
 	//Tags []Tags	`json:"tags"`
 }
 
-/*Nichts ist "required"*/
-/* TODO Vernünftigen Namen aussuchen. */
-
-type CreateOrderBody struct {
+// CreateOrder is used to create a new order in the cart.
+type CreateOrder struct {
 	CustomerComment string `json:"customerComment"`
 	AffiliateCode   string `json:"affiliateCode"`
 	CampaignCode    string `json:"campaignCode"`
 }
 
-/* TODO Vernünftigen Namen aussuchen. */
-
-type CancelOrderBody struct {
+// CancelOrder is used to cancel an order in the cart.
+type CancelOrder struct {
 	OrderId string `json:"orderId"`
 }
-
-/* TODO Passt der Name? Muss hier auch No Aggregations und OnlyAggregations. Required überprüfen. */
 
 type ListOrderFilter struct {
 	Page       int      `json:"page"`
@@ -77,7 +72,7 @@ type ListOrderFilter struct {
 
 /* TODO Vernünftigen Namen aussuchen. */
 
-type UpdatePaymentMethodOfOrderBody struct {
+type UpdatePaymentMethodOrderBody struct {
 	PaymentMethodOfId string `json:"paymentMethodOfId"`
 	OrderId           string `json:"orderId"`
 }
@@ -100,8 +95,8 @@ type ListOrderResult struct {
 	//PaymentChangeable []PaymentChangeable `json:"paymentChangeable"`
 }
 
-//UpdatePaymentMethodOfOrderResult is true if the payment method of the order is successful.
-type UpdatePaymentMethodOfOrderResult struct {
+//UpdatePaymentMethodOrderResult is true if the payment method of the order is successful.
+type UpdatePaymentMethodOrderResult struct {
 	//Success bool	`json:"success"`
 }
 
@@ -115,10 +110,10 @@ type Language struct {
 	//CustomFields      []CustomFields `json:"customFields"`
 	CreatedAt time.Time `json:"createdAt"`
 	//updatedAt         time.Time         `json:"updatedAt"`
-	//Parent            []Parent          `json:"parent"`
+	Parent *Language `json:"parent"`
 	//Locale            []Locale          `json:"locale"`
 	//TranslationCode   []TranslationCode `json:"translationCode"`
-	//Children          []Children        `json:"children"`
+	Children []Language `json:"children"`
 }
 
 //Currency is the struct for Currency in Order.
@@ -188,21 +183,6 @@ type PriceOrder struct {
 	TaxStatus     string  `json:"taxStatus"`
 }
 
-type Children struct {
-	//Id                string         `json:"id"`
-	//ParentId          string         `json:"parentId"`
-	LocaleId string `json:"localeId"`
-	//TranslationCodeId string         `json:"translationCodeId"`
-	Name string `json:"name"`
-	//CustomFields      []CustomFields `json:"customFields"`
-	CreatedAt time.Time `json:"createdAt"`
-	//updatedAt         time.Time      `json:"updatedAt"`
-	//Parent            []Parent       `json:"parent"`
-	//Locale            []Locale          `json:"locale"`
-	//TranslationCode   []TranslationCode `json:"translationCode"`
-	//Children          []Children        `json:"children"`
-}
-
 //TranslationCode is the struct TranslationCode in Language.
 type TranslationCode struct {
 	//Id        string `json:"id"`
@@ -225,22 +205,6 @@ type Locale struct {
 	CreatedAt time.Time `json:"createdAt"`
 	//updatedAt     time.Time      `json:"updatedAt"`
 	//Translated    []Translated   `json:"translated"`
-}
-
-//Parent is the struct Parent in Language.
-type Parent struct {
-	//Id                string         `json:"id"`
-	//ParentId          string         `json:"parentId"`
-	LocaleId string `json:"localeId"`
-	//TranslationCodeId string         `json:"translationCodeId"`
-	Name string `json:"name"`
-	//CustomFields      []CustomFields `json:"customFields"`
-	CreatedAt time.Time `json:"createdAt"`
-	//updatedAt         time.Time      `json:"updatedAt"`
-	//Parent            []Parent       `json:"parent"`
-	//Locale            []Locale          `json:"locale"`
-	//TranslationCode   []TranslationCode `json:"translationCode"`
-	//Children          []Children        `json:"children"`
 }
 
 //Salutation is the struct of Salutation in OrderCustomer.

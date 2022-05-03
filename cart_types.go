@@ -17,15 +17,21 @@ type Cart struct { /*EVtl. CartResult? */
 	//CampaignCode    string         `json:"campaignCode"`
 }
 
-////DeleteCartResult is the successfully deleted cart.
-//type DeleteCartResult struct {
-//	Success bool `json:"success"`
-//}
-
-//AddNUpdateItemCart adds or updates items to the cart.
-type AddNUpdateItemCart struct {
+//AddItemCart adds or updates items to the cart.
+type AddItemCart struct {
 	//ApiAlias string  `json:"apiAlias"`
 	Items []Items `json:"items"`
+}
+
+//UpdateItemCart adds or updates items to the cart.
+type UpdateItemCart struct {
+	//ApiAlias string  `json:"apiAlias"`
+	Items []Items `json:"items"`
+}
+
+//DeleteCartResult is the successfully deleted cart.
+type DeleteCartResult struct {
+	Success bool `json:"success"`
 }
 
 //PriceCart is the struct PriceCart for Cart.
@@ -57,7 +63,7 @@ type CartErrors struct {
 	//Message string `json:"message"`
 }
 
-//Transactions is a list of all payment transactions associated with the current cart.
+//Transactions is a list of all Creatyment transactions associated with the current cart.
 //type Transactions struct {
 //	PaymentMethodId string `json:"paymentMethodId"`
 //}

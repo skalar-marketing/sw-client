@@ -9,7 +9,7 @@ import (
 func TestCartClient_AddItemsCart(t *testing.T) {
 	client, err := NewClient(os.Getenv("SW_HOST"), os.Getenv("SW_ACCESS_KEY"))
 	assert.NoError(t, err)
-	result, err := client.Cart.AddItemsCart(AddNUpdateItemCart{})
+	result, err := client.Cart.AddItems(AddNUpdateItemCart{})
 
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
@@ -18,7 +18,7 @@ func TestCartClient_AddItemsCart(t *testing.T) {
 func TestCartClient_UpdateItemsCart(t *testing.T) {
 	client, err := NewClient(os.Getenv("SW_HOST"), os.Getenv("SW_ACCESS_KEY"))
 	assert.NoError(t, err)
-	result, err := client.Cart.UpdateItemsCart(AddNUpdateItemCart{})
+	result, err := client.Cart.UpdateItems(AddNUpdateItemCart{})
 
 	assert.NoError(t, err)
 	assert.NotNil(t, result)

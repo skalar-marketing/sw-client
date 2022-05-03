@@ -58,8 +58,9 @@ func (client *Client) Context() (*Context, error) {
 	return result, nil
 }
 
-func (client *Client) performGet(endpoint string, result any) error {
-	req, err := http.NewRequest("GET", client.baseURL+endpoint, nil)
+func (client *Client) performRequest(method, endpoint string, body []byte, result any) error {
+
+	req, err := http.NewRequest(method, client.baseURL+endpoint, bytes.NewReader(body))
 
 	if err != nil {
 		return err
@@ -89,39 +90,28 @@ func (client *Client) performGet(endpoint string, result any) error {
 	return nil
 }
 
+func (client *Client) performGet(endpoint string, result any) error {
+	return client.performRequest(http.MethodGet, endpoint, nil, result)
+}
+
 func (client *Client) performPost(endpoint string, request, result any) error {
 	body, err := json.Marshal(request)
 
 	if err != nil {
 		return err
 	}
+	return client.performRequest(http.MethodPost, endpoint, body, result)
+}
 
-	req, err := http.NewRequest("POST", client.baseURL+endpoint, bytes.NewReader(body))
-
-	if err != nil {
-		return err
-	}
-
-	req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Accept", "application/json")
-	req.Header.Set("sw-access-key", client.swAccessKey)
-	c := http.Client{}
-	resp, err := c.Do(req)
+func (client *Client) performPatch(endpoint string, request, result any) error {
+	body, err := json.Marshal(request)
 
 	if err != nil {
 		return err
 	}
+	return client.performRequest(http.MethodPatch, endpoint, body, result)
+}
 
-	if resp.StatusCode != http.StatusOK {
-		body, _ := io.ReadAll(resp.Body)
-		return errors.New(fmt.Sprintf("error requesting data (%d): %s", resp.StatusCode, string(body)))
-	}
-
-	decoder := json.NewDecoder(resp.Body)
-
-	if err := decoder.Decode(result); err != nil {
-		return err
-	}
-
-	return nil
+func (client *Client) performDelete(endpoint string, result any) error {
+	return client.performRequest(http.MethodDelete, endpoint, nil, result)
 }
