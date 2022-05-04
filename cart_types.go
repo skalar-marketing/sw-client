@@ -68,7 +68,7 @@ type CartErrors struct {
 //	PaymentMethodId string `json:"paymentMethodId"`
 //}
 
-//Items is the struct for Items in AddUpdateItemCart.
+//Items is the struct for Items in AddItemCart and UpdateItemCart.
 type Items struct {
 	//Id          string `json:"id"`
 	//ReferenceId string `json:"referenceId"`

@@ -24,6 +24,7 @@ type Client struct {
 	Customer    CustomerClient
 	Cart        CartClient
 	Order       OrderClient
+	Payment     PaymentClient
 }
 
 // NewClient creates a new Client for given host and access key.
@@ -44,6 +45,7 @@ func NewClient(host, accessKey string) (*Client, error) {
 	c.Customer = CustomerClient{client: c}
 	c.Cart = CartClient{client: c}
 	c.Order = OrderClient{client: c}
+	c.Payment = PaymentClient{client: c}
 	return c, nil
 }
 

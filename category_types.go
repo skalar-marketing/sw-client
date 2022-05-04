@@ -42,27 +42,6 @@ type Category struct {
 	//seoUrls
 }
 
-// Filter is used to filter results.
-type Filter struct {
-	Type  string `json:"type"`
-	Field string `json:"field"`
-	Value string `json:"value"`
-}
-
-// Sort is used to sort results.
-type Sort struct {
-	Field          string `json:"field"`
-	Order          string `json:"order"`
-	NaturalSorting bool   `json:"naturalSorting"`
-}
-
-// Aggregation is used to aggregate results.
-type Aggregation struct {
-	Name  string `json:"name"`
-	Type  string `json:"type"`
-	Field string `json:"field"`
-}
-
 // ListCategoryFilter is used to filter categories.
 type ListCategoryFilter struct {
 	Page       int      `json:"page"`

@@ -2,15 +2,12 @@ package sw
 
 import "time"
 
-// todo Initiate a payment for an order
-
-type InitiateBody struct {
+// InitiatePayment is ... todo
+type InitiatePayment struct {
 	OrderId string `json:"orderId"`
 	//FinishUrl string	`json:"finishUrl"`
 	//ErrorUrl string	`json:"errorUrl"`
 }
-
-/*todo in fetch shipping methods is onlyAvailable a var?*/
 
 // ListShippingMethodsFilter is used to filter available shipping methods.
 type ListShippingMethodsFilter struct {
@@ -32,8 +29,9 @@ type ListAvailablePaymentFilter struct {
 	Sort       []Sort   `json:"sort"`
 	PostFilter []Filter `json:"post-filter"`
 	//associations
-	Aggregations []Aggregation `json:"aggregations"`
-	Grouping     []string      `json:"grouping"`
+	Aggregations  []Aggregation `json:"aggregations"`
+	Grouping      []string      `json:"grouping"`
+	OnlyAvailable bool          `json:"onlyAvailable"`
 }
 
 // ListShippingMethodsResult contains a list of available payments methods.
