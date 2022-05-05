@@ -13,7 +13,7 @@ type OrderClient struct {
 }
 
 //Create adds new items into the cart.
-func (client *CartClient) Create(create CreateOrder) (*Order, error) {
+func (client *OrderClient) Create(create CreateOrder) (*Order, error) {
 	result := new(Order)
 
 	if err := client.client.performPost(createOrderEndpoint, create, result); err != nil {
@@ -24,7 +24,7 @@ func (client *CartClient) Create(create CreateOrder) (*Order, error) {
 }
 
 //Cancel cancels items from the cart.
-func (client *CartClient) Cancel(cancel CancelOrder) (*CancelOrderResult, error) {
+func (client *OrderClient) Cancel(cancel CancelOrder) (*CancelOrderResult, error) {
 	result := new(CancelOrderResult)
 
 	if err := client.client.performPost(cancelOrderEndpoint, cancel, result); err != nil {
@@ -34,7 +34,7 @@ func (client *CartClient) Cancel(cancel CancelOrder) (*CancelOrderResult, error)
 	return result, nil
 }
 
-func (client *CartClient) List(filter ListOrderFilter) (*ListOrderResult, error) {
+func (client *OrderClient) List(filter ListOrderFilter) (*ListOrderResult, error) {
 	result := new(ListOrderResult)
 
 	if err := client.client.performPost(listOrdersEndpoint, filter, result); err != nil {
@@ -44,7 +44,7 @@ func (client *CartClient) List(filter ListOrderFilter) (*ListOrderResult, error)
 	return result, nil
 }
 
-func (client *CartClient) UpdatePaymentMethod(update UpdatePaymentMethodOrderBody) (*UpdatePaymentMethodOrderResult, error) {
+func (client *OrderClient) UpdatePaymentMethod(update UpdatePaymentMethodOrderBody) (*UpdatePaymentMethodOrderResult, error) {
 	result := new(UpdatePaymentMethodOrderResult)
 
 	if err := client.client.performPost(updatePaymentMethodOrderEndpoint, update, result); err != nil {

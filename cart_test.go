@@ -6,19 +6,32 @@ import (
 	"testing"
 )
 
-func TestCartClient_AddItemsCart(t *testing.T) {
+func TestCartClient_CreateOrFetch(t *testing.T) {
 	client, err := NewClient(os.Getenv("SW_HOST"), os.Getenv("SW_ACCESS_KEY"))
 	assert.NoError(t, err)
-	result, err := client.Cart.AddItems(AddNUpdateItemCart{})
+	result, err := client.Cart.CreateOrFetch()
 
 	assert.NoError(t, err)
 	assert.NotNil(t, result)
 }
 
-func TestCartClient_UpdateItemsCart(t *testing.T) {
+/* Delete */
+
+func TestCartClient_AddItems(t *testing.T) {
 	client, err := NewClient(os.Getenv("SW_HOST"), os.Getenv("SW_ACCESS_KEY"))
 	assert.NoError(t, err)
-	result, err := client.Cart.UpdateItems(AddNUpdateItemCart{})
+	result, err := client.Cart.AddItems(AddItemCart{})
+
+	assert.NoError(t, err)
+	assert.NotNil(t, result)
+}
+
+/* RemoveItems */
+
+func TestCartClient_UpdateItems(t *testing.T) {
+	client, err := NewClient(os.Getenv("SW_HOST"), os.Getenv("SW_ACCESS_KEY"))
+	assert.NoError(t, err)
+	result, err := client.Cart.UpdateItems(UpdateItemCart{})
 
 	assert.NoError(t, err)
 	assert.NotNil(t, result)

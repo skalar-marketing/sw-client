@@ -11,8 +11,9 @@ type PaymentClient struct {
 	client *Client
 }
 
+/*
 // InitiatePayment is to initiate a payment flow after an order has been created.
-func (client *ProductClient) InitiatePayment(initiate InitiatePayment, filter ListProductsFilter) (*_, error) {
+func (client *PaymentClient) InitiatePayment(initiate InitiatePayment, filter ListProductsFilter) (*_, error) {
 	result := new(_)
 
 	if err := client.client.performPost(updateItemCartEndpoint, initiate, result); err != nil {
@@ -21,9 +22,10 @@ func (client *ProductClient) InitiatePayment(initiate InitiatePayment, filter Li
 
 	return result, nil
 }
+*/
 
 // ListShippingMethods performs a filtered search for shipping methods.
-func (client *ProductClient) ListShippingMethods(filter ListShippingMethodsFilter) (*ListShippingMethodsResult, error) {
+func (client *PaymentClient) ListShippingMethods(filter ListShippingMethodsFilter) (*ListShippingMethodsResult, error) {
 	result := new(ListShippingMethodsResult)
 
 	if err := client.client.performPost(shippingMethodsEndpoint, filter, result); err != nil {
@@ -34,7 +36,7 @@ func (client *ProductClient) ListShippingMethods(filter ListShippingMethodsFilte
 }
 
 // AvailablePayment performs a filtered search for shipping methods.
-func (client *ProductClient) AvailablePayment(filter ListAvailablePaymentFilter) (*ListAvailablePaymentResult, error) {
+func (client *PaymentClient) AvailablePayment(filter ListAvailablePaymentFilter) (*ListAvailablePaymentResult, error) {
 	result := new(ListAvailablePaymentResult)
 
 	if err := client.client.performPost(availablePaymentMethodsEndpoint, filter, result); err != nil {
