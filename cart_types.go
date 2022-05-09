@@ -4,10 +4,10 @@ package sw
 
 // Cart is a cart.
 type Cart struct { /*EVtl. CartResult? */
-	//ApiAlias        string         `json:"apiAlias"`
-	Name      string       `json:"name"`
-	Token     string       `json:"token"`
-	Price     []Price      `json:"price"`
+	ApiAlias string `json:"apiAlias"`
+	Name     string `json:"name"`
+	Token    string `json:"token"`
+	//PriceCart     []PriceCart      `json:"price"`		/* Unsichtbar weil ansonsten der Test nicht funktioniert. */
 	LineItems []LineItems  `json:"lineItems"`
 	Errors    []CartErrors `json:"errors"` /* Struct hat anderen Namen, weil es Errors auch bei customer_types gibt. */
 	//Transactions []Transactions `json:"transactions"`
@@ -17,19 +17,25 @@ type Cart struct { /*EVtl. CartResult? */
 	//CampaignCode    string         `json:"campaignCode"`
 }
 
-////DeleteCartResult is the successfully deleted cart.
-//type DeleteCartResult struct {
-//	Success bool `json:"success"`
-//}
-
-//AddUpdateItemCart adds or updates items to the cart.
-type AddUpdateItemCart struct {
+//AddItemCart adds or updates items to the cart.
+type AddItemCart struct {
 	//ApiAlias string  `json:"apiAlias"`
 	Items []Items `json:"items"`
 }
 
-//Price is the struct Price for Cart.
-type Price struct {
+//UpdateItemCart adds or updates items to the cart.
+type UpdateItemCart struct {
+	//ApiAlias string  `json:"apiAlias"`
+	Items []Items `json:"items"`
+}
+
+//DeleteCartResult is the successfully deleted cart.
+type DeleteCartResult struct {
+	Success bool `json:"success"`
+}
+
+//PriceCart is the struct PriceCart for Cart.
+type PriceCart struct {
 	NetPrice      float64 `json:"netPrice"`
 	TotalPrice    float64 `json:"totalPrice"`
 	PositionPrice float64 `json:"positionPrice"`
@@ -57,12 +63,12 @@ type CartErrors struct {
 	//Message string `json:"message"`
 }
 
-//Transactions is a list of all payment transactions associated with the current cart.
+//Transactions is a list of all Creatyment transactions associated with the current cart.
 //type Transactions struct {
 //	PaymentMethodId string `json:"paymentMethodId"`
 //}
 
-//Items is the struct for Items in AddUpdateItemCart.
+//Items is the struct for Items in AddItemCart and UpdateItemCart.
 type Items struct {
 	//Id          string `json:"id"`
 	//ReferenceId string `json:"referenceId"`

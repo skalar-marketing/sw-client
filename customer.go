@@ -47,7 +47,7 @@ func (client *CustomerClient) Registration(register Register) (*RegisterResult, 
 }
 
 func (client *CustomerClient) Confirmation(confirmRegistration ConfirmRegistration) (*LoginResult, error) {
-	result := new(LoginResult) // Aber vlt. auch nur Login?
+	result := new(LoginResult) /* Aber vlt. auch nur Login? */
 
 	if err := client.client.performPost(confirmRegistrationEndpoint, confirmRegistration, result); err != nil {
 		return result, nil

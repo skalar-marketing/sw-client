@@ -16,14 +16,14 @@ type ConfirmRegistration struct {
 
 // Register registers a customer. Used both for normal customers and guest customers.
 type Register struct {
-	Email                  string           `json:"email"`
-	Password               string           `json:"password"`
-	SalutationId           string           `json:"salutationId"`
-	FirstName              string           `json:"firstName"`
-	LastName               string           `json:"lastName"`
-	AcceptedDataProtection string           `json:"acceptedDataProtection"`
-	StorefrontUrl          string           `json:"storefrontUrl"`
-	BillingAddress         []BillingAddress `json:"billingAddress"` //Das Objekt ist unten
+	Email                  string            `json:"email"`
+	Password               string            `json:"password"`
+	SalutationId           string            `json:"salutationId"`
+	FirstName              string            `json:"firstName"`
+	LastName               string            `json:"lastName"`
+	AcceptedDataProtection string            `json:"acceptedDataProtection"`
+	StorefrontUrl          string            `json:"storefrontUrl"`
+	BillingAddress         []BillingAddress  `json:"billingAddress"`  //Das Objekt ist unten
 	ShippingAddress        []ShippingAddress `json:"shippingAddress"` //Das Objekt ist unten
 	//AccountType   string `json:"accountType"`
 	//Guest         string `json:"guest"`
@@ -138,24 +138,24 @@ type BillingAddress struct {
 
 // ShippingAddress is the shipping address.
 type ShippingAddress struct {
-//	//Id         string `json:"id"`
+	//	//Id         string `json:"id"`
 	CustomerId string `json:"customerId"`
-	CountryId      string `json:"countryId"`
-//	//CountryStateId string `json:"countryStateId"`
+	CountryId  string `json:"countryId"`
+	//	//CountryStateId string `json:"countryStateId"`
 	SalutationId string `json:"salutationId"`
 	FirstName    string `json:"firstName"`
 	LastName     string `json:"lastName"`
 	Zipcode      string `json:"zipcode"`
 	City         string `json:"city"`
-//	//Company
+	//	//Company
 	Street string `json:"street"`
-//	//Department
-//	//Title
-//	//PhoneNumber
-//	//additionalAddressLine1
-//	//additionalAddressLine2
-//	//CustomFields
-//	//Country []Country
-//	//CountryState []CountryState
-//	//Salutation []Salutation
-//}
+	//	//Department
+	//	//Title
+	//	//PhoneNumber
+	//	//additionalAddressLine1
+	//	//additionalAddressLine2
+	//	//CustomFields
+	//	//Country []Country
+	//	//CountryState []CountryState
+	//	//Salutation []Salutation
+}
