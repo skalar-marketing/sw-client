@@ -13,10 +13,9 @@ type PaymentClient struct {
 
 /*
 // InitiatePayment is to initiate a payment flow after an order has been created.
-func (client *PaymentClient) InitiatePayment(initiate InitiatePayment, filter ListProductsFilter) (*_, error) {
-	result := new(_)
+func (client *PaymentClient) InitiatePayment(initiate InitiatePayment) (*, error) {
 
-	if err := client.client.performPost(updateItemCartEndpoint, initiate, result); err != nil {
+	if err := client.client.performPost(initiatePaymentEndpoint, initiate, nil); err != nil {
 		return nil, err
 	}
 

@@ -33,6 +33,16 @@ func (client *CustomerClient) Logout() (*LogoutResult, error) {
 	return result, nil
 }
 
+//Confirmation confirms a customer registration.
+func (client *CustomerClient) Confirmation(confirmRegistration ConfirmRegistration) (*LoginResult, error) {
+	result := new(LoginResult) /* Aber vlt. auch nur Login? */
+
+	if err := client.client.performPost(confirmRegistrationEndpoint, confirmRegistration, result); err != nil {
+		return result, nil
+	}
+	return result, nil
+}
+
 // Registration returns a successful user.
 func (client *CustomerClient) Registration(register Register) (*RegisterResult, error) {
 	result := new(RegisterResult)
@@ -44,13 +54,4 @@ func (client *CustomerClient) Registration(register Register) (*RegisterResult, 
 
 	return result, nil
 
-}
-
-func (client *CustomerClient) Confirmation(confirmRegistration ConfirmRegistration) (*LoginResult, error) {
-	result := new(LoginResult) /* Aber vlt. auch nur Login? */
-
-	if err := client.client.performPost(confirmRegistrationEndpoint, confirmRegistration, result); err != nil {
-		return result, nil
-	}
-	return result, nil
 }
